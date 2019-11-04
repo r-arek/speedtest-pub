@@ -2,7 +2,7 @@ dist: xenial
 
 before_install:
   - sudo apt-get update
-  - sudo apt-get -y speedtest-cli
+  - sudo apt-get -y install speedtest-cli
 
 install:
   - tmux -V
