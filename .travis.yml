@@ -1,11 +1,6 @@
-dist: xenial
-
-before_install:
-  - sudo apt-get update
-  - sudo apt-get -y install speedtest-cli
-
+language: python
+  - "3.6"
 install:
-  - tmux -V
-  
+  - pip install speedtest-cli
 script:
   - speedtest-cli --single
