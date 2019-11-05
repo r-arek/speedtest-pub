@@ -1,6 +1,9 @@
-language: python
-  - "3.6"
+dist: xenial
+
 install:
-  - pip install speedtest-cli
+  - tmux -V
+
 script:
-  - speedtest-cli --single
+  - wget -O speedtest-cli https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py
+  - chmod +x speedtest-cli
+  - python speedtest-cli --single
