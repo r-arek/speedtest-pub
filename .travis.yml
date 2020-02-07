@@ -10,9 +10,4 @@ install:
   - tmux -V
 
 script:
-  - wget -O speedtest-cli https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py
-  - chmod +x speedtest-cli
-  - python speedtest-cli --single
-
-notifications:
-  webhooks: https://webhook.site/ccedcd47-3cae-48b2-b5d9-2afc6915293b
+  - for i in {1..10}; do curl --fail --location https://www-eu.apache.org/dist/creadur/KEYS --output ./KEYS && rm KEYS; done 
