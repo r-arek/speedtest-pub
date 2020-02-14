@@ -1,7 +1,14 @@
-dist: xenial
-
-install:
-  - tmux -V
-
-script:
-  - for i in {1..10}; do curl --fail --location https://www-eu.apache.org/dist/creadur/KEYS --output ./KEYS && rm KEYS; done 
+dist: bionic
+sudo: false
+services:
+  - postgresql
+addons:
+  postgresql: "10"
+  apt:
+    packages:
+      - postgresql-10
+      - postgresql-client-10
+      - postgresql-contrib-10
+before_install:
+  - systemctl status postgresql@10-main.service
+  - journalctl -u postgresql@10-main.service
