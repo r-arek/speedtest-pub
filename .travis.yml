@@ -11,4 +11,4 @@ addons:
       - postgresql-client-10
       - postgresql-contrib-10
 before_install:
-  - journalctl -u postgresql@10-main.service
+  - psql -d template1 -U postgres -c "CREATE USER pinafore WITH PASSWORD 'pinafore' CREATEDB;"
