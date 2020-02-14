@@ -10,5 +10,4 @@ addons:
       - postgresql-client-10
       - postgresql-contrib-10
 before_install:
-  - systemctl status postgresql@10-main.service
   - journalctl -u postgresql@10-main.service
