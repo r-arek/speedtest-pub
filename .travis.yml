@@ -1,9 +1,12 @@
 dist: bionic
 group: dev
 sudo: false
-services:
-  - postgresql
-addons:
-  postgresql: "10"
-before_install:
-  - systemctl status postgresql@10-main.service
+before_script:
+  - time docker pull postgres:11-alpine
+  - docker run -d --name postgres -e POSTGRES_PASSWORD= -e POSTGRES_HOST_AUTH_METHOD=trust -p 5432:5432 postgres:11-alpine
+  - psql --version
+  - |
+    until psql -c 'CREATE DATABASE travis_test;' -U postgres; do
+      sleep 1
+    done
+  - psql -c 'CREATE ROLE travis SUPERUSER LOGIN CREATEDB;' -U postgres
