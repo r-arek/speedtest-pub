@@ -1,10 +1,4 @@
 dist: bionic
-
-cache:
-  directories:
-   - /var/lib/snapd
-   - /snap
-   - /var/snap
 addons:
   snaps:
   - name: google-cloud-sdk
@@ -18,4 +12,5 @@ addons:
 
 before_install:
 - sleep 120
+
 
