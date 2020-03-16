@@ -18,4 +18,3 @@ addons:
 
 before_install:
 - sleep 120
-
