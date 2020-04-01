@@ -1,14 +1,3 @@
 dist: bionic
-addons:
-  snaps:
-  - name: google-cloud-sdk
-    confinement: classic
-  - name: fluxctl
-    confinement: classic
-  - name: kubectl
-    confinement: classic
-  - name: vault
-    confinement: classic
-
-before_install:
-- sleep 120
+script:
+  - for i in {1..120}; do echo "TEST"; sleep 1; done
