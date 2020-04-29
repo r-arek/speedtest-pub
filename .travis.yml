@@ -4,6 +4,8 @@ addons:
   snaps:
   - name: google-cloud-sdk
     confinement: classic
+  - name: vault
+    confinement: classic
 
 services:
 - docker
@@ -22,8 +24,8 @@ jobs:
         - vault login "${VAULT_TOKEN}"
         - vault kv get -field=secret "gcp/gcp-k8s-sa-${PROJECT}" > /tmp/gcp_sa_key.json
         - gcloud -q auth activate-service-account --key-file /tmp/gcp_sa_key.json && gcloud auth configure-docker;
+      script:
         - docker build . --cache-from gcr.io/travis-ci-prod-services-1/speedtest-pub:latest -t gcr.io/travis-ci-prod-services-1/speedtest-pub:$IMG_TAG
         - docker tag gcr.io/travis-ci-prod-services-1/speedtest-pub:$IMG_TAG gcr.io/travis-ci-prod-services-1/speedtest-pub:latest
-      script:
         - docker push gcr.io/travis-ci-prod-services-1/speedtest-pub:$IMG_TAG
         - docker push gcr.io/travis-ci-prod-services-1/speedtest-pub:latest
