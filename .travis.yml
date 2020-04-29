@@ -25,11 +25,9 @@ jobs:
         - vault kv get -field=secret "gcp/gcp-k8s-sa-production" > /tmp/gcp_sa_key.json
         - gcloud -q auth activate-service-account --key-file /tmp/gcp_sa_key.json
         - gcloud auth configure-docker
-        - gcloud components install docker-credential-gcr
-        - docker-credential-gcr configure-docker
         - export IMG_TAG=$(git rev-parse --short HEAD)
       script:
         - docker build . --cache-from gcr.io/travis-ci-prod-services-1/speedtest-pub:latest -t gcr.io/travis-ci-prod-services-1/speedtest-pub:$IMG_TAG
         - docker tag gcr.io/travis-ci-prod-services-1/speedtest-pub:$IMG_TAG gcr.io/travis-ci-prod-services-1/speedtest-pub:latest
-        - docker push gcr.io/travis-ci-prod-services-1/speedtest-pub:$IMG_TAG
-        - docker push gcr.io/travis-ci-prod-services-1/speedtest-pub:latest
+        - gcloud docker push gcr.io/travis-ci-prod-services-1/speedtest-pub:$IMG_TAG
+        - gcloud docker push gcr.io/travis-ci-prod-services-1/speedtest-pub:latest
