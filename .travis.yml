@@ -27,7 +27,7 @@ jobs:
         - gcloud auth configure-docker
         - export IMG_TAG=$(git rev-parse --short HEAD)
       script:
-        - docker build . --cache-from gcr.io/travis-ci-prod-services-1/speedtest-pub:latest -t gcr.io/travis-ci-prod-services-1/speedtest-pub:$IMG_TAG
+        - docker build . -t gcr.io/travis-ci-prod-services-1/speedtest-pub:$IMG_TAG
         - docker tag gcr.io/travis-ci-prod-services-1/speedtest-pub:$IMG_TAG gcr.io/travis-ci-prod-services-1/speedtest-pub:latest
-        - gcloud docker push gcr.io/travis-ci-prod-services-1/speedtest-pub:$IMG_TAG
-        - gcloud docker push gcr.io/travis-ci-prod-services-1/speedtest-pub:latest
+        - gcloud docker -- push gcr.io/travis-ci-prod-services-1/speedtest-pub:$IMG_TAG
+        - gcloud docker -- push gcr.io/travis-ci-prod-services-1/speedtest-pub:latest
