@@ -22,7 +22,7 @@ jobs:
     - name: build and deploy
       before_script:
         - vault login "${VAULT_TOKEN}"
-        - vault kv get -field=secret "gcp/gcp-k8s-sa-${PROJECT}" > /tmp/gcp_sa_key.json
+        - vault kv get -field=secret "gcp/gcp-k8s-sa-production" > /tmp/gcp_sa_key.json
         - gcloud -q auth activate-service-account --key-file /tmp/gcp_sa_key.json && gcloud auth configure-docker;
       script:
         - docker build . --cache-from gcr.io/travis-ci-prod-services-1/speedtest-pub:latest -t gcr.io/travis-ci-prod-services-1/speedtest-pub:$IMG_TAG
