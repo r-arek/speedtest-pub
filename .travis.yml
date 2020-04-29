@@ -19,9 +19,6 @@ jobs:
   include:
     - name: build and deploy
       before_script:
-        - rm .gitignore
-        - git add _site
-        - git commit -am 'add _site'
         - vault login "${VAULT_TOKEN}"
         - vault kv get -field=secret "gcp/gcp-k8s-sa-${PROJECT}" > /tmp/gcp_sa_key.json
         - gcloud -q auth activate-service-account --key-file /tmp/gcp_sa_key.json && gcloud auth configure-docker;
