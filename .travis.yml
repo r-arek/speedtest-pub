@@ -1,33 +1,12 @@
-language: ruby
-
-addons:
-  snaps:
-  - name: google-cloud-sdk
-    confinement: classic
-  - name: vault
-    confinement: classic
-
-services:
-- docker
-
-branches:
-  only:
-    - master
-
-env:
-  USE_GIT_MTIMES: true
+dist: trusty
 
 jobs:
   include:
-    - name: build and deploy
-      before_script:
-        - vault login "${VAULT_TOKEN}"
-        - vault kv get -field=secret "gcp/gcp-k8s-sa-production" > /tmp/gcp_sa_key.json
-        - gcloud -q auth activate-service-account --key-file /tmp/gcp_sa_key.json
-        - gcloud auth configure-docker
-        - export IMG_TAG=$(git rev-parse --short HEAD)
+    - name: build
       script:
-        - docker build . -t gcr.io/travis-ci-prod-services-1/speedtest-pub:$IMG_TAG
-        - docker tag gcr.io/travis-ci-prod-services-1/speedtest-pub:$IMG_TAG gcr.io/travis-ci-prod-services-1/speedtest-pub:latest
-        - gcloud docker -- push gcr.io/travis-ci-prod-services-1/speedtest-pub:$IMG_TAG
-        - gcloud docker -- push gcr.io/travis-ci-prod-services-1/speedtest-pub:latest
+        - echo "Build"
+    - name: deploy
+      if: branch =master
+      before_script:
+      script:
+        - echo "deploy"
