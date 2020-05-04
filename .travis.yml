@@ -5,8 +5,10 @@ jobs:
     - name: build
       script:
         - echo "Build"
+        - echo "$TRAVIS_EVENT_TYPE"
     - name: deploy
       if: branch = master
       script:
         - echo "deploy"
+        - echo "$TRAVIS_EVENT_TYPE"
 
