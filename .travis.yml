@@ -1,12 +1,9 @@
-dist: trusty
+dist: xenial
 
 addons:
   snaps:
   - name: google-cloud-sdk
-    confinement: classic
   - name: vault
-    confinement: classic
-
 
 jobs:
   include:
