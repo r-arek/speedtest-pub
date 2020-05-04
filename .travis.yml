@@ -1,5 +1,16 @@
 dist: trusty
 
+addons:
+  apt:
+    packages:
+      - libxml2-utils
+  snaps:
+  - name: google-cloud-sdk
+    confinement: classic
+  - name: vault
+    confinement: classic
+
+
 jobs:
   include:
     - name: build
