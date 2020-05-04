@@ -6,7 +6,7 @@ jobs:
       script:
         - echo "Build"
     - name: deploy
-      if: branch =master
-      before_script:
+      if: branch = master
       script:
         - echo "deploy"
+
