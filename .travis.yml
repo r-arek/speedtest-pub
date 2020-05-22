@@ -1,4 +1,9 @@
-dist: focal
+dist: 
+  - focal
+  - bionic
+  - trusty
+  - precise
+  - xenial
 arch: arm64-graviton2
 language: go
 
