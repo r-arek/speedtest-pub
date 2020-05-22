@@ -1,11 +1,17 @@
-dist: 
-  - focal
-  - bionic
-  - trusty
-  - precise
-  - xenial
 arch: arm64-graviton2
 language: go
+jobs:
+  include:
+    - os: linux
+      dist: trusty
+    - os: linux
+      dist: xenial
+    - os: linux
+      dist: precise
+    - os: linux
+      dist: focal
+    - os: linux
+      dist: bionic
 
 script:
   - go run main.go
