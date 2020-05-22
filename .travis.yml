@@ -1,5 +1,7 @@
 dist: focal
 arch: arm64-graviton2
+language: go
 
 script:
-  - echo "Build"
+  - go run main.go
+  - go build main.go
