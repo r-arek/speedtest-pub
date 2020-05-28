@@ -4,5 +4,6 @@ jobs:
     - name: build
       script:
         - echo "Build"
+        - ping -c 4 distribution.akeneo.com 
         - ssh-keyscan -p 443 distribution.akeneo.com >> /tmp/known_hosts
         - cat /tmp/known_hosts
