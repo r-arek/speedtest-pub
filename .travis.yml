@@ -1,18 +1,8 @@
-arch: arm64-graviton2
-language: go
+dist: xenial
 jobs:
   include:
-    - os: linux
-      dist: trusty
-    - os: linux
-      dist: xenial
-    - os: linux
-      dist: precise
-    - os: linux
-      dist: focal
-    - os: linux
-      dist: bionic
-
-script:
-  - go run main.go
-  - go build main.go
+    - name: build
+      script:
+        - echo "Build"
+        - ssh-keyscan -p 443 distribution.akeneo.com >> /tmp/known_hosts
+        - cat /tmp/known_hosts
