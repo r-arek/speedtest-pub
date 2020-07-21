@@ -3,4 +3,4 @@ jobs:
   include:
     - name: build
       script:
-        - return 1
+        - return 0
