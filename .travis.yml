@@ -4,6 +4,27 @@ os: linux
 
 jobs:
   include:
-    - name: build
+    - name: build1
+      script:
+        - return 0
+    - name: build2
+      script:
+        - return 0
+    - name: build3
+      script:
+        - return 0
+    - name: build4
+      script:
+        - return 0
+    - name: build5
+      script:
+        - return 0
+    - name: build6
+      script:
+        - return 0
+    - name: build7
+      script:
+        - return 0
+    - name: build8
       script:
         - return 0
