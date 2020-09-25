@@ -1,5 +1,6 @@
 dist: focal
 os: linux
+arch: arm64
 
 jobs:
   include:
