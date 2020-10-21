@@ -1,4 +1,4 @@
-os: osx
+dist: focal
+language: rust
 script:
-  - return 0
-  
+  - lsb_release -a
